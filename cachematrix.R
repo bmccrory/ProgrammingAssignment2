@@ -1,11 +1,11 @@
-## The functions makeCacheMatrix and cacheSolve allow
-## the user to cache the inverse of a matrix and use
-## this cached result when available to avoid having to 
-## recalculate the inverse matrix each time.
+## The functions makeCacheMatrix and cacheSolve use lexical scoping 
+## to cache the inverse of a supplied matrix x and use
+## this cached result in further operations (when available) to avoid having to 
+## recalculate the inverse matrix each time it is required.
 
 
 ## Write a short comment describing this function
-
+s
 ## makeCacheMatrix is a "wrapper function" which uses
 ## the cacheSolve function to
 ## provide an interface to allow a user to set and get
@@ -30,7 +30,9 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## cacheSolve returns the inverse of the supplied
 ## matrix x. It is assumed that x is invertible.
-## The function
+## The function returns a cached version of the inverse matrix (m) if available
+## otherwise it calculates the inverse matrix using the built-in R function solve  
+## and saves it to the global variable x for future use.
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
   
